@@ -1,0 +1,141 @@
+CREATE DATABASE RouteCar;
+USE RouteCar;
+# Cria as tabelas
+CREATE TABLE Loja(
+	Nome Varchar(60) NOT NULL,
+	CNPJ Char(14) PRIMARY KEY NOT NULL,
+	Email Varchar(90) NOT NULL,
+	Senha Varchar(20) NOT NULL,
+	Bairro Varchar(45) NOT NULL,	
+	Rua Varchar(45) NOT NULL,
+	Numero Varchar(5) NOT NULL,
+	CEP Varchar(11) NOT NULL,
+	Cidade Varchar(30) NOT NULL,
+	Estado Varchar(20) NOT NULL,
+	Telefone Char(12) NOT NULL
+);
+
+CREATE TABLE Funcionario(
+	Id_Funcionario Int(2) PRIMARY KEY NOT NULL,
+	Nome Varchar(25) NOT NULL,
+	Validade_Cadastro Date NOT NULL,
+	Senha Varchar(20) NOT NULL,
+	CNPJ_LojaFunc Char(14) NOT NULL,
+	FOREIGN KEY (CNPJ_LojaFunc) REFERENCES Loja(CNPJ)
+);
+
+CREATE TABLE Marca(
+	Nome Varchar(25) PRIMARY KEY NOT NULL
+);
+
+
+CREATE TABLE Modelo (
+	Nome Varchar(90) PRIMARY KEY NOT NULL,
+	Nome_Marca Varchar(25) NOT NULL,
+	FOREIGN KEY (Nome_Marca) REFERENCES Marca(Nome) 
+);
+
+CREATE TABLE Veiculo(
+        Id_Veiculo Int(5) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	Nome_Modelo_Veiculo VARCHAR(90) NOT NULL,
+        Cor Varchar(15) NOT NULL,
+        Ano Year NOT NULL,
+        Combustivel Varchar(30) NOT NULL,
+        Descricao Varchar(200),
+        Ano_Fabricacao Year NOT NULL,
+        Quilometragem Int(6)  NOT NULL,
+        Valor Decimal(8,2) NOT NULL,
+        Tipo_Freio Varchar(20) NOT NULL,
+        Qtd_Marchas Int(1) NOT NULL,
+        CNPJ_LojaVeiculo Char(14) NOT NULL,
+	Imagem Varchar(9) NOT NULL,
+        FOREIGN KEY (CNPJ_LojaVeiculo) REFERENCES Loja(CNPJ),
+	FOREIGN KEY (Nome_Modelo_Veiculo) REFERENCES Modelo(Nome)
+)AUTO_INCREMENT = 1;
+
+
+
+
+CREATE TABLE Moto(
+        Id_VeiculoMoto Int(5) PRIMARY KEY NOT NULL,
+        Injecao Varchar(15) NOT NULL,  
+        Partida Varchar(15) NOT NULL,
+        Cilindradas Int(5) NOT NULL,
+        FOREIGN KEY (Id_VeiculoMoto) REFERENCES Veiculo(Id_Veiculo) ON DELETE CASCADE
+);
+
+
+CREATE TABLE Carro(
+        Id_VeiculoCarro Int (5) PRIMARY KEY NOT NULL,
+        Qtd_Portas Int (1) NOT NULL,
+        Tracao Varchar (30) NOT NULL,
+        Cambio Varchar (11) NOT NULL,
+        Espaco_PortaMala Varchar (10) NOT NULL,
+        Capacidade_Lugar Int(1) NOT NULL,
+        Airbag Boolean NOT NULL,
+        Ar_condicionado Boolean NOT NULL,
+        Adaptado Boolean NOT NULL,
+        FOREIGN KEY (Id_VeiculoCarro) REFERENCES Veiculo (Id_Veiculo) ON DELETE CASCADE
+);
+
+
+# Insere 7 Lojas
+INSERT INTO Loja() VALUES ('Kauê e Felipe Consultoria Financeira ME' , '64297045000152' , 'financeiro@kaueefelipeconsultoriafinanceirame.com.br' , 'O4JfTi5pUhgKW99XbZN5', 'Loteamento Parque Residencial da Lealdade' , 'Rua Projetada 8' , '990',  '15054615', 'São José do Rio Preto' , 'SP', '17989258063' ), ('Ryan e Larissa Vidros ME' , '10533631000120' , 'faleconosco@ryanelarissavidrosme.com.br' , 'U5q0oXlrIpsXj233ayju', 'Higienópolis' , 'Via de Pedestre Bangalore 603' , '269',  '01244906', 'São Paulo' , 'SP', '11983576584' ), ('Marcelo e Sebastiana Comercio de Bebidas Ltda' , '12842613000155' , 'manutencao@marceloesebastianacomerciodebebidasltda.com.br' , 'WF6rF5FgTTbpPHg5fHmn', 'Centro(Universo)' , 'Rua Espanha' , '773',  '17623050', 'Tupã' , 'SP', '14995587948' ), ('Pedro Henrique e Juliana Casa Noturna ME' , '42460905000194' , 'manutencao@pedrohenriqueejulianacasanoturname.com.br' , 'yWBXN4Qos0ZF6WyCQ4il', 'Capim Macio' , 'Avenida dos Ipês' , '943',  '59080105', 'Natal' , 'RN', '84991878275' ), ('Cláudia e Camila Informática ME' , '38846956000181' , 'ouvidoria@claudiaecamilainformaticame.com.br' , 'NAReIyZn6CQtYSHmMYQ6', 'Alecrim' , 'Travessa Presidente José Bento' , '885',  '59037300', 'Natal' , 'RN', '84986602990' ), ('Manuela e Kaique Gráfica Ltda' , '15454847000113' , 'faleconosco@manuelaekaiquegraficaltda.com.br' , 'OqBKCzMTsw57wMb4B1i7', 'Nossa Senhora da Apresentação' , 'Rua Casa Verde' , '660',  '59114238', 'Natal' , 'RN', '84989596035' ), ('Cauê e Arthur Restaurante ME' , '14124124124124' , 'pesquisa@caueearthurrestauranteme.com.br' , '30rQIz4WMKRb1Sm3I0M2', 'Conjunto Alfredo Freire' , 'Rua Maria Arminda de Oliveira' , '845',  '38056160', 'Uberaba' , 'MG', '34992612015' );
+
+# Insere 4 Funcionários
+INSERT Funcionario() VALUES (1, 'Lucyon Hiluyci', '2008-01-14',  'mmG3Q8NLskaf1l13Mac4', '64297045000152'), (2, 'Zete Kahivoes', '2019-02-15',  '8y27uc6ucyOFbU8rTM3C', '10533631000120'), (3, 'Onguvo Wiukubae', '2017-03-22',  'xShn4YhHz9Byy4uiXrSz', '12842613000155'), (4, 'Leyxo Fear', '2019-05-30',  'fi5643nNFhP30yhuME2B', '42460905000194');
+
+# Insere 6 Marcas
+INSERT INTO Marca() VALUES ('BMW'), ('Fiat'), ('Ford'), ('CHERY'), ('Honda');
+
+# Insere 6 Modelos
+INSERT INTO Modelo() VALUES ('850Ci/CiA 5.0 24V', 'BMW'), ('500 Cabrio/500 Coupe GUCCI/Flex 1.4 Aut', 'Fiat'), ('Stilo Dualogic 1.8 Flex 8V 5p', 'Fiat'), ('Escort XR3 1.8 / 1.6 Convers', 'Ford'), ('F-100 Blazer 2.3', 'Ford'), ('Celer Hatch 1.5 16V Flex 5p', 'CHERY'), ('Biz110i', 'Honda');
+
+
+# Insere 7 Veiculos
+INSERT INTO Veiculo(Nome_Modelo_Veiculo, Cor, Ano, Combustivel, Descricao, Ano_Fabricacao, Quilometragem, Valor, Tipo_Freio, Qtd_Marchas, CNPJ_LojaVeiculo, Imagem) VALUES ('850Ci/CiA 5.0 24V', 'Cinza', '1991', 'Alcool', '' , '2018',  100000 , '63000.00', 'ABS', 5, '64297045000152', 'imagem1') ,('500 Cabrio/500 Coupe GUCCI/Flex 1.4 Aut', 'Verde', '2012', 'Gasolina', '', '2017', 75000 , '75000.00', 'ABS', 5, '10533631000120', 'imagem2') ,('Stilo Dualogic 1.8 Flex 8V 5p', 'Azul', '2008', 'Gás Natural', '', '2016', 200000  , '125000.00', 'ABS', 5, '12842613000155', 'imagem3') ,('Escort XR3 1.8 / 1.6 Convers', 'Branco', '1985', 'Alcool', '', '2018',  58000 , '10000.00', 'ABS', 5, '42460905000194', 'imagem4') ,('F-100 Blazer 2.3', 'Vermelho', '1985', 'Gasolina', '', '2019',  5000 , '250000.00', 'ABS', 5, '38846956000181', 'imagem5') ,('Celer Hatch 1.5 16V Flex 5p' , 'Azul', '2013', 'Gás Natural', '', '2015', 999999  , '2590.00', 'ABS', 5, '15454847000113', 'imagem6'), ('Biz110i', 'Vermelha', '2019', 'Flex', '', '2018', 25000, '7828.00', 'ABS', '0', '64297045000152', 'imagem7');
+
+
+# Insere 6 Carros
+INSERT INTO Carro() VALUES (1, 1, 'Tração nas quatro rodas', 'Automático', '10L', 5, 1, 1, 1), (2, 2, 'Tração nas quatro rodas', 'Manual', '20L', 5, 0, 0, 0), (3, 3, 'Tração traseira', 'Manual', '30L', 5, 1, 1, 1), (4, 4, 'Tração dianteira', 'Automático', '50L', 5, 0, 0, 0), (5, 1, 'Tração integral', 'Manual', '60L', 5, 1, 1, 1), (6, 2, 'Tração integral', 'Automático', '50L', 5, 0, 0, 0);
+
+# Insere 1 Moto
+INSERT INTO Moto() VALUES (7, 'Eletrônica', 'Elétrica', '100');
+
+
+
+# Filtra os veículos por Nome do modelo
+SELECT * FROM Veiculo WHERE Nome_Modelo_Veiculo LIKE '%?%';
+
+
+# Filtra os veículos por Marca
+SELECT * FROM Veiculo INNER JOIN Modelo ON Modelo.Nome = Veiculo.Nome_Modelo_Veiculo WHERE Modelo.Nome_Marca LIKE '%?%';
+
+
+# Exclui um veículo
+DELETE FROM Veiculo WHERE Id_Veiculo= ?;
+
+# Modifica a cor do veículo atributo da tabela
+UPDATE Veiculo set Cor = '?' WHERE Id_Veiculo = ?;
+
+# Modifica o Ano do Veículo
+UPDATE Veiculo set Ano = '?' WHERE Id_Veiculo = ?;
+
+# Modifica a Descrição do Veículo
+UPDATE Veiculo set Descricao = '?' WHERE Id_Veiculo = ?;
+
+
+# Modifica o Valor de um Veículo
+UPDATE Veiculo set Valor = ? WHERE Id_Veiculo = ?;
+
+# Lista todos os Veículos de uma loja
+SELECT * FROM Veiculo WHERE CNPJ_LojaVeiculo = '?';
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+1- a)
+NÑ ou Não-Primeira-Forma-Normal pois na tabela existem atributos multivalorados e atributos compostos
+
+Passando para a primeira forma normal, temos:
+
+Cliente(idCliente (PK), NomeCliente)
+Endereço(Rua, Número , idCliente (PK)(PFK))
+Telefones_clientes(Número_Telefone, idCliente (PK)(PFK))
+
+b) Primeira forma normal pois não tem tabela aninhada, nem atributos compostos mas tem dependência funcional parcial.
+
+Passando para a Segunda Forma Normal, temos:
+
+Pedido(IdPedido (PK), DataPedido, ValorTotal)
+Venda(IdPedido (PK)(PFK), CodProduto (PK)(PFK), Qtde)
+Produto(CodProduto (PK), NomeProduto, ValorUnitario)
+
+c) Primeira forma normal pois não tem tabela aninhada, nem atributos compostos mas tem dependência funcional parcial. O valor unitário por exemplo, depende só do produto.
+
+Passando para a Segunda Forma Normal, temos:
+
+Pedido(idPedido (PK), DataPedido, ValorTotal)
+Venda(IdPedido (PK)(PFK), CodProduto (PK)(PFK), Qtde)
+Produto(CodProduto (PK), ValorUnitario)
+
+
+2- 
+NÑ : PEDIDO (NUM_PEDIDO, DATA, PRAZO, NOME_REV, ENDERECO, CIDADE, UF, CNPJ, INSC_EST, NUM_F, (COD_PROD, DESC, SETOR, QUANT, VALOR_UNIT, DESCONTO, SUBTOTAL))
+
+
+Pedido(NUM_PEDIDO(PK), DATA, PRAZO, CNPJ(PFK), NUM_F(PFK))
+
+Pedido_Produto(COD_PROD(PFK), NUM_PEDIDO(PFK), QUANT, DESCONTO, SUBTOTAL)
+
+Revendedores(NOME_REV, CNPJ(PK), INSC_EST)
+
+Funcionário(NUM_F (PK))
+
+Produto (COD_PROD(PK), DESC, SETOR, VALOR_UNIT)
+
+Endereço_Revendedor(Cnpj(PK)(FPK), CIDADE, UF, CEP, Rua, Bairro, Número)
+
+
+3-
+NÑ :
+
+Papelaria(idVenda, idCliente, Itens(Quantidade, Nome_Item))
+
+
+Passando para a Terceira Forma Normal, temos (Considerando UNICAMENTE, a tabela passada):
+
+Venda(idVenda(PK), idCliente(FPK), ValorVenda)
+
+Cliente(idCliente(PK), Nome, Telefone)
+
+Venda_Item(Cod_item(PK)(PFK), idVenda(PK)(PFK), Quantidade)
+
+Itens(Cod_item(PK), ValorUnitário)
+
+

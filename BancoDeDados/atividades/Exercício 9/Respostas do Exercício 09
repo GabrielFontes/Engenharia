@@ -1,0 +1,62 @@
+CREATE DATABASE teste;
+USE teste;
+CREATE TABLE Funcionarios(
+	Codigo INT(3) PRIMARY KEY NOT NULL,
+	PrimeiroNome VARCHAR(20) NOT NULL,
+	SegundoNome VARCHAR(20),
+	UltimoNome VARCHAR(20) NOT NULL,
+	DataNasci DATE NOT NULL,
+	CodigoDepartamento INT(2) NOT NULL,
+	CPF VARCHAR(11),
+	RG VARCHAR(10),
+	Endereco VARCHAR(50),
+	CEP VARCHAR(8),
+	Cidade VARCHAR(20) NOT NULL,
+	Fone VARCHAR(12),
+	Funcao VARCHAR(20),
+	Salario DECIMAL(9,2)	
+);
+
+CREATE TABLE Departamentos(
+	Codigo INT(2) PRIMARY KEY NOT NULL,
+	Nome VARCHAR(20) NOT NULL,
+	CodigoFuncionarioGerente INT(2) NOT NULL,
+	Localizacao VARCHAR(25)
+);
+
+ALTER TABLE Funcionarios ADD FOREIGN KEY (CodigoDepartamento) REFERENCES Departamentos (Codigo);
+ALTER TABLE Departamentos ADD FOREIGN KEY (CodigoFuncionarioGerente) REFERENCES Funcionarios (Codigo);
+
+INSERT INTO Funcionarios() VALUES ('1' , 'Abel' , 'Fulano' , 'silva' , '1997-12-18' , '12345', 'as1234', 'rua geraldino' ,'39402351', 'moc' , '1' , 'gerente' , '500.00'), ('2' , 'juca' , 'bete' , 'ribas' , '1998-11-18' , '12375', 'as1204', 'rua a' ,'39402354', 'moc' , '2' , 'supervisor' , '5500.00'), ('3' , 'xerebebel' , 'arnaldo' , 'leme' , '1993-10-17' , '12785', 'ds1234', 'rua geraldino' ,'39402351', 'moc' , '3' , 'carregador' , '500.00');
+
+1- a) SELECT COLUMNS PrimeiroNome, SegundoNome, UltimoNome FROM Funcionarios ORDER BY SegundoNome, UltimoNome;
+
+b) SELECT * FROM Funcionarios ORDER BY Cidade;
+
+c) SELECT PrimeiroNome, SegundoNome, UltimoNome Codigo FROM Funcionarios WHERE SALARIO>1000 ORDER BY PrimeiroNome, SegundoNome, UltimoNome;
+
+d) SELECT DataNasci, PrimeiroNome FROM Funcionarios ORDER BY DESC PrimeiroNome, SegundoNome, UltimoNome;
+
+e) SELECT Salario, SUM(FolhaPagamento) FROM Funcionarios GROUP BY Salario;
+
+f) SELECT PrimeiroNome, SegundoNome, UltimoNome, Departamentos.nome, Funcao FROM Funcionarios INNER JOIN Departamentos ON (Funcionarios.CodigoDepartamento = Departamentos.Codigo)
+
+g) SELECT Departamentos.nome, PrimeiroNome, SegundoNome, UltimoNome FROM Funcionarios INNER JOIN Departamentos ON (Funcionarios.Codigo = Departamentos.CodigoFuncionarioGerente)
+
+h) SELECT Departamentos.nome, Salario, SUM(FolhaPagamento) FROM Funcionarios INNER JOIN Departamentos ON (Funcionarios.Codigo = Departamentos.CodigoFuncionarioGerente)
+
+i) SELECT Departamentos.nome FROM Funcionarios WHERE Funcao='supervisor' INNER JOIN Departamentos ON (Funcionarios.CodigoDepartamento = Departamentos.Codigo);
+
+j) SELECT COUNT(Codigo) FROM Funcionarios;
+
+k) SELECT AVG(Salario) FROM Funcionarios;
+
+l) 
+
+m) SELECT PrimeiroNome, UltimoNome FROM Funcionarios WHERE SegundoNome=NULL; 
+
+n) SELECT Departamentos.nome, PrimeiroNome, SegundoNome, UltimoNome FROM Funcionarios ORDER BY Departamentos.nome, PrimeiroNome, SegundoNome, UltimoNome INNER JOIN Departamentos ON (Funcionarios.Codigo = Departamentos.CodigoFuncionarioGerente);
+
+o) SELECT Departamento.nome, PrimeiroNome, SegundoNome, UltimoNome FROM Funcionario WHERE Departamento.nome='Pessoal'INNER JOIN Departamentos.nome ON (Funcionarios.CodigoDepartamento = Departamentos.Codigo)
+
+p)
