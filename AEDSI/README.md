@@ -227,11 +227,11 @@ C suporta alguns diversos códigos de barra invertida (normalmente characteres i
 
 Como essas informações apresentadas são curiosidades, deixarei algumas perguntas.
 
-```
+
 Dúvidas que não serão respondidas:
 1. Se só existem 128 characteres na tabela ASCII, para que serve o restante dos números que podem ser representados por 8 bits?
 2. Usar unsigned e signed char faz algum sentido?  
-```
+
 
 # Variáveis
 
@@ -557,17 +557,16 @@ Os comandos de controle podem ser dividios em algumas classes:
 
 
 ## Comandos de Iteração
-- **While**
-  - 
+- **While** 
 - **For**
   - for(<inicialização>; <condição>; <incremento>)<comando>;
   - Condição de parada pré-definida. 
 - **Do-While**
-#### **> Comandos de desvio**
+### **> Comandos de desvio**
 - **Break**
 - **Continue**
 - **Return**
-#### **> Rótulos**
+### **> Rótulos**
 - **Case**
 - **Default**
 
