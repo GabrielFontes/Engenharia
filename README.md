@@ -1,10 +1,10 @@
-# caes
+# Engenharia.me
 
-Projeto do C.A.E.S para organização interna das demandas.
+Esses são alguns **resumos** que fiz durante a faculdade. Alguns assuntos específicos, irei abordar em artigos específicos no [Medium](https://dibs-fontes.medium.com/) 
 
 # Padrão de Projeto
 
-Os resumos das disciplinas serão organizados em módulos e os módulos serão compostos por:
+Os resumos das disciplinas serão organizados nos módulos:
 - **Introdução**:
   - O que é?
 - **Finalidade**:
@@ -13,5 +13,3 @@ Os resumos das disciplinas serão organizados em módulos e os módulos serão c
   - Como funciona?
 - **Abordagens práticas** 
   - Opcional
-
-![Padrão de Projeto](imagens/PadrãoDeProjeto.png)
