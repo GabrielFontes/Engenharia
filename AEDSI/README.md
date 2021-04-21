@@ -19,7 +19,7 @@
 - [Matrizes e vetores](#Matrizes-e-vetores)
 - [Ponteiros](#Ponteiros)
 - [Struct](#Struct)
-- [Recursividaed](#Recursividade)
+- [Recursividade](#Recursividade)
 - [Alocação de memória](#Alocação-de-memória)
 	- [Alicação Dinâmica de memória](##Alocação-dinâmica-de-memória)
 
