@@ -1,20 +1,20 @@
 # Índice
 
-- [Banco De Dados](#-Banco-de-dados)
-- [SGBD](#-**SGBD**)
-- [Modelos de Banco de Dados](#-**Modelos-de-banco**)
-  - [Conceitos para a Modelagem](##-**Conceitos-para-a-modelagem**)
-- [Modelagem Conceitual](#-**Modelagem-Conceitual**)
-  - [Regras de Cardinalidade](##-**Regras-de-Cardinalidade**)
-  - [Regras de Relação que contém atributo](##-**Regras-de-Relação-que-contém-Atributos**)
-  - [Conceitos de Entidade Relacionamento](##-**Conceitos-de-Entidade-Relacionamento**)
-  - [Restrição de Integridade](##-**Restrição-de-Integridade**)
-  - [Regra de mapeamento do modelo entidade relacionamento](##-**Regras-de-mapeamento-do-modelo-Entidade-Relacionamento**)
-- [Modelagem Lógica](#-**Modelagem-Lógica**)
-  - [Normalização](##-**Normalização-/-Engenharia-Reversa**)
-    - [Primeira forma normal](###-**Primeira-forma-normal**)
-    - [Segunda forma normal](###-**Segunda-forma-normal**)
-    - [Terceira forma normal](###-**Terceira-forma-normal**)
+- [Banco De Dados](#Banco-de-dados)
+- [SGBD](#SGBD)
+- [Modelos de Banco de Dados](#Modelos-de-banco)
+  - [Conceitos para a Modelagem](##Conceitos-para-a-modelagem)
+- [Modelagem Conceitual](#Modelagem-Conceitual)
+  - [Regras de Cardinalidade](##Regras-de-Cardinalidade)
+  - [Regras de Relação que contém atributo](##Regras-de-Relação-que-contém-Atributos)
+  - [Conceitos de Entidade Relacionamento](##Conceitos-de-Entidade-Relacionamento)
+  - [Restrição de Integridade](##Restrição-de-Integridade)
+  - [Regra de mapeamento do modelo entidade relacionamento](##Regras-de-mapeamento-do-modelo-Entidade-Relacionamento)
+- [Modelagem Lógica](#Modelagem-Lógica)
+  - [Normalização](##Normalização-/-Engenharia-Reversa)
+    - [Primeira forma normal](###Primeira-forma-normal)
+    - [Segunda forma normal](###Segunda-forma-normal)
+    - [Terceira forma normal](###Terceira-forma-normal)
 
 # Banco de dados
 
@@ -38,7 +38,7 @@ Os níveis são:
 - **Nível Lógico**: Descreve os dados armazenados e faz relação entre eles;
 - **Nível Físico**: Descreve como os dados realmente estão armazenados.
 
-# **SGBD**
+# SGBD
 ## O que é?
 Conjunto de dados + Conjunto de Programas que monitoram o banco = SGBD
 ## Para que serve?
@@ -87,7 +87,7 @@ SGBD guarda metadados (Informações sobre outras informações [ Quem pode aces
 
 
 
-# **Modelos de banco**
+# Modelos de banco
 
 ## O que é?
 São representações dos bancos de dados.
@@ -115,7 +115,7 @@ São divididos em:
   - Utiliza código de programação.
 
 
-## **Conceitos para a modelagem**
+## Conceitos para a modelagem
 
 - **Entidade**
   - Existe entidade **Concreta** e **Abstrata**;
@@ -161,7 +161,7 @@ Um atributo também pode ser chave:
     - Vai ser um atributo chave que vem de outra entidade.
 
 
-# **Modelagem Conceitual**
+# Modelagem Conceitual
 
 ## Como funciona?
 É composto por:
@@ -201,18 +201,18 @@ Ou seja: **1** aluno possui **1** matrícula, e **1** matrícula só pode ser de
 
 
 
-## **Regras de Cardinalidade**
+## Regras de Cardinalidade
 
 - Toda vez que a cardinalidade for de **muitos** para **muitos** (**n:n**) entre duas entidades, surge delas uma nova entidade. Essa nova entidade vai receber a chave primária das outras entidades. Se transformando em chaves estrageiras.
 - Quando a cardinalidade for **1** (Entidade forte) para **n** (Entidade Fraca), a entidade com cardinalidade **1** tem sua chave primária passada para a outra entidade como chave estrangeira.
 - Quando a cardinalidade for **1** para **1**, temos a "liberdade" de escolher em qual lado vai ficar a chave estrangeira
 
-## **Regras de Relação que contém Atributos**
+## Regras de Relação que contém Atributos
 Caso uma relação contenha um atributo:
 - Se as entidades estiverem a relação **1** para **1** o atributo vai para qualquer uma das entidades;
 - Se as entidades estiverem a relação **n** para **n**, o atributo vai para a nova tabela criada;
 
-## **Conceitos de Entidade Relacionamento**
+## Conceitos de Entidade Relacionamento
 
 - **Agregação**:\
   Junção de várias entidades em uma única tabela;\
@@ -232,7 +232,7 @@ Caso uma relação contenha um atributo:
 - **Relação**:\
   É a mesma coisa que as entidades ou tabelas de um banco.
 
-## **Restrição de Integridade**
+## Restrição de Integridade
 São regras para manter os dados íntegros, aumentando a segurança. Podem ser de 4 tipos:
 - **Restrições de chaves**:\
   Deve assumir um valor único em todas as tuplas da relação.
@@ -263,7 +263,8 @@ Como por exemplo, nível de formação, Cargo, Sexo. São restrições que não 
 Existe mais uma restrição que será abordada mais a frente, a **Restrições de Integridade referencial**.
 
 ![Exemplos](Imagens/Exemplo12.png)
-## **Regras de mapeamento do modelo Entidade Relacionamento**
+
+## Regras de mapeamento do modelo Entidade Relacionamento
 
 1. Todas as entidades são mapeadas para uma relação;
    
@@ -274,7 +275,7 @@ Existe mais uma restrição que será abordada mais a frente, a **Restrições d
 4. Para relacionamento N:M, Cria-se uma nova relação contendo as chaves primárias das outras entidades.
 
 
-# **Modelagem Lógica**
+# Modelagem Lógica
 
 ## Como funciona?
 Composta por:
@@ -285,7 +286,7 @@ Composta por:
 Exemplos:
 ![Exemplo](Imagens/BancodeDados1.png)
 
-## **Normalização / Engenharia Reversa**
+## Normalização / Engenharia Reversa
 
 ### O que é?
 É também chamada de Engenharia reversa porque a normalização parte dos dados brutos para criar uma relação. Consiste no uso de filtros para tornar a base de dados a mais simples e eficiente.
@@ -308,7 +309,7 @@ Basenado-se nas etapas de normalização:
   - Tabela não-primeira-forma-normal;
   - Notação ÑN;
 
-### **Primeira forma normal**
+### Primeira forma normal
 
 - Não devem existir tabelas aninhadas;
 - Não devem existir atributos multivalorados ou compostos.
@@ -319,7 +320,7 @@ O que é tabela aninhada? Tabelas onde:
 - Coluna não-atômica
 
 
-### **Segunda forma normal**
+### Segunda forma normal
 
 Além de estar na primeira forma normal, os **dados não deverão ter uma dependência funcional parcial**
 
@@ -334,7 +335,7 @@ Existem cinco tipos de dependência funcional. Mas as mais importantes para o ba
   Se eu tiver A eu consigo achar B, Se eu tiver B eu consigo obter C. Logo, se eu tiver A eu posso ter C.
 
 
-### **Terceira forma normal**
+### Terceira forma normal
 
 Deve estar na segunda e não poderá ter dependência funcional transitiva
 
